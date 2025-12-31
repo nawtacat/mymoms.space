@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Մայրիկիս</title>
+    <style>
+        /* Define the custom fonts */
+        @font-face {
+            font-family: 'ArmBoloragir';
+            src: url('https://kaffetish.club/mom/fonts/ArmBoloragir%20Italic.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'ArmBoloragir';
+            src: url('https://kaffetish.club/mom/fonts/ArmBoloragir%20Bold%20Italic.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            /* Background setup */
+            background-image: url('https://kaffetish.club/mom/mash.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Keeps background still while scrolling */
+            background-repeat: no-repeat;
+            
+            /* Font setup */
+            font-family: 'ArmBoloragir', serif;
+            color: #2c1810; /* Dark brown text for better contrast */
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 50%;
+            min-width: 320px;
+            margin-left: 50px;
+            min-height: 100vh;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 2px solid #2c1810;
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .letter {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px dashed #999;
+        }
+
+        .letter h2 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            display: block;
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        #passwordOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 2s ease;
+        }
+        .login-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            max-width: 90%;
+            transition: opacity 0.5s ease;
+        }
+        .login-box input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 1.1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: 'ArmBoloragir', serif;
+        }
+        .login-box button {
+            background: #2c1810;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'ArmBoloragir', serif;
+        }
+
+        #welcomeMessage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: #2c1810;
+            opacity: 0;
+            transition: opacity 1s ease;
+            text-align: center;
+            width: 100%;
+            font-family: 'ArmBoloragir', serif;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="passwordOverlay">
+        <div class="login-box">
+            <h2>Մուտքագրեք գաղտնաբառը</h2>
+            <input type="password" id="passwordInput" placeholder="********">
+            <button onclick="checkPassword()">Մուտք</button>
+            <p id="errorMsg" style="color: #d32f2f; display: none; margin-top: 10px;">Սխալ գաղտնաբառ</p>
+        </div>
+        <div id="welcomeMessage">Բարի Գալուստ.. Տուն</div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Մայրիկիս</h1>
+            <p class="subtitle">Նամակների և հիշողությունների արխիվ</p>
+        </header>
+        
+        <main>
+            <!-- Example Letter 1 -->
+            <article class="letter">
+                <h2>Առաջին նամակ</h2>
+                <span class="date">Հունվար 1, 2024</span>
+                <div class="content">
+                    <p>Սիրելի մայրիկ, սա առաջին գրառումն է քո արխիվում...</p>
+                </div>
+            </article>
+
+            <!-- Example Letter 2 -->
+            <article class="letter">
+                <h2>Ծնունդդ շնորհավոր</h2>
+                <span class="date">Մարտ 8, 2024</span>
+                <div class="content">
+                    <p>Այսօր ուզում եմ գրել քեզ այն մասին, թե որքան...</p>
+                </div>
+            </article>
+        </main>
+
+        <footer>
+            <p>Սիրով՝ քո զավակ</p>
+        </footer>
+    </div>
+
+    <audio id="bgMusic" src="https://kaffetish.club/mom/music.mp3" autoplay loop></audio>
+
+    <script>
+        const audio = document.getElementById('bgMusic');
+        const overlay = document.getElementById('passwordOverlay');
+        const passwordInput = document.getElementById('passwordInput');
+        const errorMsg = document.getElementById('errorMsg');
+        const CORRECT_PASSWORD = 'sonayar3';
+        
+        function checkPassword() {
+            if (passwordInput.value === CORRECT_PASSWORD) {
+                audio.play().catch(() => {});
+                
+                const loginBox = document.querySelector('.login-box');
+                const welcomeMsg = document.getElementById('welcomeMessage');
+                
+                loginBox.style.opacity = '0';
+                setTimeout(() => {
+                    loginBox.style.display = 'none';
+                    welcomeMsg.style.opacity = '1';
+                    
+                    setTimeout(() => {
+                        overlay.style.opacity = '0';
+                        setTimeout(() => {
+                            overlay.style.display = 'none';
+                        }, 2000);
+                    }, 3000);
+                }, 500);
+            } else {
+                errorMsg.style.display = 'block';
+                passwordInput.value = '';
+            }
+        }
+
+        passwordInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            const fadeTime = 6; // seconds
+            if (audio.duration && audio.currentTime > audio.duration - fadeTime) {
+                // Linear fade out
+                const newVolume = (audio.duration - audio.currentTime) / fadeTime;
+                audio.volume = Math.max(0, newVolume);
+            } else {
+                // Ensure volume is full otherwise
+                audio.volume = 1;
+            }
+        });
+    </script>
+</body>
+</html>
